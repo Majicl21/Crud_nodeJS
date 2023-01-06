@@ -12,6 +12,7 @@ mongoose
     console.error('Error connecting to mongo', err.reason)
   })
 const trainingRoute = require('./routes/training.routes')
+const courseRoute = require('./routes/course.routes')
 const app = express()
 app.use(bodyParser.json())
 app.use(
@@ -24,6 +25,7 @@ app.use(cors())
 app.use(express.static(path.join(__dirname, 'dist/my-app')))
 // API root
 app.use('/api', trainingRoute)
+app.use('/api/course', courseRoute)
 // PORT
 const port = process.env.PORT || 8000
 app.listen(port, () => {
